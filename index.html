@@ -7,27 +7,155 @@
 </head>
 <body>
 
-	<p id="equals">=</p>
+	<section id="calculator">
+		<div class="display">
+			<input id = "sum" value="0">
+			<input id= "display" value="0">
+		</div>
 
-	<p id="zero">0</p>
-	<p id="one">1</p>
-	<p id="two">2</p>
-	<p id="three">3</p>
-	<p id="four">4</p>
-	<p id="five">5</p>
-	<p id="six">6</p>
-	<p id="seven">7</p>
-	<p id="eight">8</p>
-	<p id="nine">9</p>
+	<button id="one" class="button">1</button>
+	<button id="two" class="button">2</button>
+	<button id="three"class="button">3</button>
+	<button id="four" class="button">4</button>
+	<button id="five" class="button">5</button>
+	<button id="six" class="button">6</button>
+	<button id="seven" class="button">7</button>
+	<button id="eight" class="button">8</button>
+	<button id="nine" class="button">9</button>
+	<button id="zero" class="button">0</button>
 
-	<p id="add">+</p>
-	<p id="subtract">-</p>
-	<p id="multiply">*</p>
-	<p id="divide">/</p>
+	<button id="add" class="button">+</button>
+	<button id="subtract" class="button">-</button>
+	<button id="multiply" class="button">*</button>
+	<button id="divide" class="button">/</button>
 
-	<p id="decimal">.</p>
+	<button id="decimal" class="button">.</button>
 
-	<p id="clear">C</p>
+	<button id="clear" class="button">C</button>
+
+	<button id="equals" class="button">=</button>
+
+</section>
+
+
+	<script>
+
+		let one = document.getElementById("one");
+		let two = document.getElementById("two");
+		let three = document.getElementById("three");
+		let four = document.getElementById("four");
+		let five = document.getElementById("five");
+		let six = document.getElementById("six");
+		let seven = document.getElementById("seven");
+		let eight = document.getElementById("eight");
+		let nine = document.getElementById("nine");
+		let zero = document.getElementById("zero");
+
+		let display = document.getElementById("display");
+		let sum = document.getElementById("sum");
+
+		let addButt = document.getElementById("add")
+		let subtractButt = document.getElementById("subtract")
+		let multiplyButt = document.getElementById("multiply")
+		let divideButt = document.getElementById("divide")
+
+		let current = "";
+		let result = 0;
+		let temp = "0";
+
+		function update (){
+			display.value = result;
+			sum.value = current;
+		}
+
+		one.addEventListener('click', function(){
+			current += 1;
+			temp +=1;
+			update();
+		})
+
+		two.addEventListener('click', function(){
+			current += 2;
+			temp +=2;
+			update();
+		})
+
+		three.addEventListener('click', function(){
+			current += 3;
+			temp +=3;
+			update();
+		})
+
+		four.addEventListener('click', function(){
+			current += 4;
+			temp +=4;
+			update();
+		})
+
+		five.addEventListener('click', function(){
+			current += 5;
+			temp +=5;
+			update();
+		})
+
+		six.addEventListener('click', function(){
+			current += 6;
+			temp +=6;
+			update();
+		})
+
+		seven.addEventListener('click', function(){
+			current += 7;
+			temp +=7;
+			update();
+		})
+
+		eight.addEventListener('click', function(){
+			current += 8;
+			temp +=8;
+			update();
+		})
+
+		nine.addEventListener('click', function(){
+			current += 9;
+			temp +=9;
+			update();
+		})
+
+		zero.addEventListener('click', function(){
+			current += 0;
+			temp +=0;
+			update();
+		})
+
+		addButt.addEventListener('click', function(){
+			current += "+";
+			temp = parseInt(temp, 10);
+			result = add(temp, result);
+			update();
+			temp = "0";
+		})
+
+
+
+
+		function add (a, b){
+			return (a + b);
+		}
+
+		function subtract (a, b){
+			return (a - b);
+		}	
+
+		function multiply (a, b){
+			return (a * b);
+		}
+
+		function divide (a, b){
+			return (a / b);
+		}
+
+	</script>
 
 </body>
 </html>
