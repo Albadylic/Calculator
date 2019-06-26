@@ -54,14 +54,15 @@
 		let display = document.getElementById("display");
 		let sum = document.getElementById("sum");
 
-		let addButt = document.getElementById("add")
-		let subtractButt = document.getElementById("subtract")
-		let multiplyButt = document.getElementById("multiply")
-		let divideButt = document.getElementById("divide")
+		let addButt = document.getElementById("add");
+		let subtractButt = document.getElementById("subtract");
+		let multiplyButt = document.getElementById("multiply");
+		let divideButt = document.getElementById("divide");
+		let equalsButt = document.getElementById("equals");
 
 		let current = "";
 		let result = 0;
-		let temp = "0";
+		let total = 0;
 
 		function update (){
 			display.value = result;
@@ -70,70 +71,106 @@
 
 		one.addEventListener('click', function(){
 			current += 1;
-			temp +=1;
+			result +=1;
 			update();
 		})
 
 		two.addEventListener('click', function(){
 			current += 2;
-			temp +=2;
+			result +=2;
 			update();
 		})
 
 		three.addEventListener('click', function(){
 			current += 3;
-			temp +=3;
+			result +=3;
 			update();
 		})
 
 		four.addEventListener('click', function(){
 			current += 4;
-			temp +=4;
+			result +=4;
 			update();
 		})
 
 		five.addEventListener('click', function(){
 			current += 5;
-			temp +=5;
+			result +=5;
 			update();
 		})
 
 		six.addEventListener('click', function(){
 			current += 6;
-			temp +=6;
+			result +=6;
 			update();
 		})
 
 		seven.addEventListener('click', function(){
 			current += 7;
-			temp +=7;
+			result +=7;
 			update();
 		})
 
 		eight.addEventListener('click', function(){
 			current += 8;
-			temp +=8;
+			result +=8;
 			update();
 		})
 
 		nine.addEventListener('click', function(){
 			current += 9;
-			temp +=9;
+			result +=9;
 			update();
 		})
 
 		zero.addEventListener('click', function(){
 			current += 0;
-			temp +=0;
+			result +=0;
 			update();
 		})
 
+
+
 		addButt.addEventListener('click', function(){
+			total += parseInt(result, 10);
+			console.log(total);
 			current += "+";
-			temp = parseInt(temp, 10);
-			result = add(temp, result);
+			result = "+";
 			update();
-			temp = "0";
+			result = 0;
+		})
+
+		subtractButt.addEventListener('click', function(){
+			total -= parseInt(result, 10);
+			console.log(total);
+			current += "-";
+			result = "-";
+			update();
+			result = 0;
+		})
+
+		multiplyButt.addEventListener('click', function(){
+			total *= parseInt(result, 10);
+			console.log(total);
+			current += "*";
+			result = "*";
+			update();
+			result = 0;
+		})
+
+		divideButt.addEventListener('click', function(){
+			total /= parseInt(result, 10);
+			console.log(total);
+			current += "/";
+			result = "/";
+			update();
+			result = 0;
+		})
+
+		equalsButt.addEventListener('click', function(){
+			current += "=" + total;
+			result = total;
+			update();
 		})
 
 
