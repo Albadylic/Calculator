@@ -69,67 +69,87 @@
 		let firstNum = null;
 		let secondNum = 0;
 		let lastOp = "";
+		let eqPress = false;
 
 		function update (){
 			display.value = result;
 			sum.value = current;
 		}
 
+		function equalsCheck(){
+			if (eqPress){
+				firstNum = null;
+				current = "";
+				eqPress = false;
+				update();
+			}
+		}
+
 		one.addEventListener('click', function(){
+			equalsCheck();
 			current += 1;
 			result += 1;
 			update();
 		})
 
 		two.addEventListener('click', function(){
+			equalsCheck();
 			current += 2;
 			result += 2;
 			update();
 		})
 
 		three.addEventListener('click', function(){
+			equalsCheck();
 			current += 3;
 			result += 3;
 			update();
 		})
 
 		four.addEventListener('click', function(){
+			equalsCheck();
 			current += 4;
 			result += 4;
 			update();
 		})
 
 		five.addEventListener('click', function(){
+			equalsCheck();
 			current += 5;
 			result += 5;
 			update();
 		})
 
 		six.addEventListener('click', function(){
+			equalsCheck();
 			current += 6;
 			result += 6;
 			update();
 		})
 
 		seven.addEventListener('click', function(){
+			equalsCheck();
 			current += 7;
 			result += 7;
 			update();
 		})
 
 		eight.addEventListener('click', function(){
+			equalsCheck();
 			current += 8;
 			result += 8;
 			update();
 		})
 
 		nine.addEventListener('click', function(){
+			equalsCheck();
 			current += 9;
 			result += 9;
 			update();
 		})
 
 		zero.addEventListener('click', function(){
+			equalsCheck();
 			current += 0;
 			result += 0;
 			update();
@@ -161,6 +181,9 @@
 
 
 		addButt.addEventListener('click', function(){
+			if (eqPress){
+				eqPress = false;
+			}
 			current += "+";
 			if (firstNum === null){
 				firstNum = parseFloat(result, 10);
@@ -174,6 +197,9 @@
 		})
 
 		subtractButt.addEventListener('click', function(){
+			if (eqPress){
+				eqPress = false;
+			}
 			current += "-";
 			if (firstNum === null){
 				firstNum = parseFloat(result, 10);
@@ -187,6 +213,9 @@
 		})
 
 		multiplyButt.addEventListener('click', function(){
+			if (eqPress){
+				eqPress = false;
+			}
 			current += "*";
 			if (firstNum === null){
 				firstNum = parseFloat(result, 10);
@@ -200,6 +229,9 @@
 		})
 
 		divideButt.addEventListener('click', function(){
+			if (eqPress){
+				eqPress = false;
+			}
 			current += "/";
 			if (firstNum === null){
 				firstNum = parseFloat(result, 10);
@@ -224,7 +256,8 @@
 			result = firstNum;
 			update();
 			result = "";
-			current = firstNum;
+			current = firstNum.toString();
+			eqPress = true;
 		})
 
 		clear.addEventListener('click', function(){
