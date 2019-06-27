@@ -62,7 +62,8 @@
 
 		let current = "";
 		let result = "";
-		let total = null;
+		let firstNum = null;
+		let secondNum = 0;
 		let lastOp = "";
 
 		function update (){
@@ -72,137 +73,147 @@
 
 		one.addEventListener('click', function(){
 			current += 1;
-			result +=1;
+			result += 1;
 			update();
 		})
 
 		two.addEventListener('click', function(){
 			current += 2;
-			result +=2;
+			result += 2;
 			update();
 		})
 
 		three.addEventListener('click', function(){
 			current += 3;
-			result +=3;
+			result += 3;
 			update();
 		})
 
 		four.addEventListener('click', function(){
 			current += 4;
-			result +=4;
+			result += 4;
 			update();
 		})
 
 		five.addEventListener('click', function(){
 			current += 5;
-			result +=5;
+			result += 5;
 			update();
 		})
 
 		six.addEventListener('click', function(){
 			current += 6;
-			result +=6;
+			result += 6;
 			update();
 		})
 
 		seven.addEventListener('click', function(){
 			current += 7;
-			result +=7;
+			result += 7;
 			update();
 		})
 
 		eight.addEventListener('click', function(){
 			current += 8;
-			result +=8;
+			result += 8;
 			update();
 		})
 
 		nine.addEventListener('click', function(){
 			current += 9;
-			result +=9;
+			result += 9;
 			update();
 		})
 
 		zero.addEventListener('click', function(){
 			current += 0;
-			result +=0;
+			result += 0;
 			update();
 		})
 
-		function checkNull(){
-			if (total === null){
-				total = parseInt(current, 10)
+		function opCheck(){
+			switch (lastOp){
+				case "+":
+				firstNum = add(firstNum, secondNum);
+				break;
+				case "-":
+				firstNum -= secondNum;
+				break;
+				case "*":
+				firstNum *= secondNum;
+				break;
+				case "/":
+				firstNum /= secondNum;
+				break;
 			}
 		}
 
 
-
 		addButt.addEventListener('click', function(){
-			checkNull();
-			total += parseInt(result, 10);
-			console.log(total);
 			current += "+";
-			result = "+";
+			if (firstNum === null){
+				firstNum = parseInt(result, 10);
+			} else {
+				secondNum = parseInt(result, 10);
+			}
+			opCheck()
+			lastOp = "+";
 			update();
 			result = "";
-			lastOp = "+"
 		})
 
 		subtractButt.addEventListener('click', function(){
-			checkNull();
-			total -= parseInt(result, 10);
-			console.log(total);
 			current += "-";
-			result = "-";
+			if (firstNum === null){
+				firstNum = parseInt(result, 10);
+			} else {
+				secondNum = parseInt(result, 10);
+			}
+			opCheck();
+			lastOp = "-";
 			update();
 			result = "";
-			lastOp = "-";
 		})
 
 		multiplyButt.addEventListener('click', function(){
-			checkNull();
-			total *= parseInt(result, 10);
-			console.log(total);
 			current += "*";
-			result = "*";
+			if (firstNum === null){
+				firstNum = parseInt(result, 10);
+			} else {
+				secondNum = parseInt(result, 10);
+			}
+			opCheck();
+			lastOp = "*";
 			update();
 			result = "";
-			lastOp = "*";
 		})
 
 		divideButt.addEventListener('click', function(){
-			checkNull();
-			total /= parseInt(result, 10);
-			console.log(total);
 			current += "/";
-			result = "/";
+			if (firstNum === null){
+				firstNum = parseInt(result, 10);
+			} else {
+				secondNum = parseInt(result, 10);
+			}
+			opCheck();
+			lastOp = "/";
 			update();
 			result = "";
-			lastOp = "/";
 		})
 
 		equalsButt.addEventListener('click', function(){
-			switch (lastOp){
-				case "+":
-				total += parseInt(result, 10);
-				break;
-				case "-":
-				total -= parseInt(result,10);
-				break;
-				case "*":
-				total *= parseInt(result,10);
-				break;
-				case "/":
-				total /= parseInt(result,10);
-				break;
+			if (firstNum === null){
+				firstNum = parseInt(result, 10);
+			} else {
+				secondNum = parseInt(result, 10);
 			}
-			console.log(current.split("+"))
-			current += "=" + total;
-			result = total;
+			opCheck();
+			lastOp = "=";
+			current += "=" + firstNum;
+			result = firstNum;
 			update();
+			result = "";
 		})
-
 
 
 
