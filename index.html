@@ -51,6 +51,8 @@
 		let nine = document.getElementById("nine");
 		let zero = document.getElementById("zero");
 
+		let decimal = document.getElementById("decimal");
+
 		let display = document.getElementById("display");
 		let sum = document.getElementById("sum");
 
@@ -59,6 +61,8 @@
 		let multiplyButt = document.getElementById("multiply");
 		let divideButt = document.getElementById("divide");
 		let equalsButt = document.getElementById("equals");
+
+		let clear = document.getElementById("clear");
 
 		let current = "";
 		let result = "";
@@ -131,10 +135,17 @@
 			update();
 		})
 
+
+		decimal.addEventListener('click', function(){
+			current += ".";
+			result += ".";
+			update();
+		})
+
 		function opCheck(){
 			switch (lastOp){
 				case "+":
-				firstNum = add(firstNum, secondNum);
+				firstNum += secondNum;
 				break;
 				case "-":
 				firstNum -= secondNum;
@@ -152,9 +163,9 @@
 		addButt.addEventListener('click', function(){
 			current += "+";
 			if (firstNum === null){
-				firstNum = parseInt(result, 10);
+				firstNum = parseFloat(result, 10);
 			} else {
-				secondNum = parseInt(result, 10);
+				secondNum = parseFloat(result, 10);
 			}
 			opCheck()
 			lastOp = "+";
@@ -165,9 +176,9 @@
 		subtractButt.addEventListener('click', function(){
 			current += "-";
 			if (firstNum === null){
-				firstNum = parseInt(result, 10);
+				firstNum = parseFloat(result, 10);
 			} else {
-				secondNum = parseInt(result, 10);
+				secondNum = parseFloat(result, 10);
 			}
 			opCheck();
 			lastOp = "-";
@@ -178,9 +189,9 @@
 		multiplyButt.addEventListener('click', function(){
 			current += "*";
 			if (firstNum === null){
-				firstNum = parseInt(result, 10);
+				firstNum = parseFloat(result, 10);
 			} else {
-				secondNum = parseInt(result, 10);
+				secondNum = parseFloat(result, 10);
 			}
 			opCheck();
 			lastOp = "*";
@@ -191,9 +202,9 @@
 		divideButt.addEventListener('click', function(){
 			current += "/";
 			if (firstNum === null){
-				firstNum = parseInt(result, 10);
+				firstNum = parseFloat(result, 10);
 			} else {
-				secondNum = parseInt(result, 10);
+				secondNum = parseFloat(result, 10);
 			}
 			opCheck();
 			lastOp = "/";
@@ -203,9 +214,9 @@
 
 		equalsButt.addEventListener('click', function(){
 			if (firstNum === null){
-				firstNum = parseInt(result, 10);
+				firstNum = parseFloat(result, 10);
 			} else {
-				secondNum = parseInt(result, 10);
+				secondNum = parseFloat(result, 10);
 			}
 			opCheck();
 			lastOp = "=";
@@ -213,25 +224,19 @@
 			result = firstNum;
 			update();
 			result = "";
+			current = firstNum;
 		})
 
+		clear.addEventListener('click', function(){
+		current = "";
+		result = "";
+		firstNum = null;
+		secondNum = 0;
+		lastOp = "";
+		display.value = 0;
+		sum.value = 0;
 
-
-		function add (a, b){
-			return (a + b);
-		}
-
-		function subtract (a, b){
-			return (a - b);
-		}	
-
-		function multiply (a, b){
-			return (a * b);
-		}
-
-		function divide (a, b){
-			return (a / b);
-		}
+		})
 
 	</script>
 
